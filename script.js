@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Function to add a new task
     function addTask(taskText, save = true) {
+      // Ensure taskText is provided and is not empty
       if (!taskText || taskText.trim() === "") {
         alert("Please enter a valid task");
         return;
       }
   
-      // Trim the task text
-      taskText = taskText.trim();
+      taskText = taskText.trim(); // Ensure task text is clean
   
       // Create a new list item
       const item = document.createElement("li");
@@ -56,19 +56,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to load tasks from Local Storage
     function loadTasks() {
       const storedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-      storedTasks.forEach((taskText) => addTask(taskText, false)); // 'false' to avoid saving again
+      storedTasks.forEach((taskText) => addTask(taskText, false)); // 'false' to avoid re-saving
     }
   
     // Add event listener to "Add Task" button
     addButton.addEventListener("click", () => {
-      addTask(taskInput.value);
+      const taskText = taskInput.value; // Retrieve value from input
+      addTask(taskText); // Call addTask with the processed taskText
       taskInput.value = ""; // Clear the input field
     });
   
     // Add event listener to input field for "Enter" key
     taskInput.addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
-        addTask(taskInput.value);
+        const taskText = taskInput.value; // Retrieve value from input
+        addTask(taskText); // Call addTask with the processed taskText
         taskInput.value = ""; // Clear the input field
       }
     });
