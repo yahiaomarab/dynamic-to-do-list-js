@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Please enter a valid task");
         return;
       }
-  
+      
       taskText = taskText.trim(); // Ensure task text is clean
   
       // Create a new list item
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Add event listener to "Add Task" button
     addButton.addEventListener("click", () => {
-      const taskText = taskInput.value; // Retrieve value from input
+      const taskText = taskInput.value.trim(); // Retrieve value from input
       addTask(taskText); // Call addTask with the processed taskText
       taskInput.value = ""; // Clear the input field
     });
